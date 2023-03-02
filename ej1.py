@@ -54,17 +54,3 @@ def catalogar(vehiculos):
         print()
         
         
-c1= Coche("rojo", 40, 1200)
-print(c1)
-c2= Coche("amarillo", 50, 1000)
-print(c2)
-ca1= Camioneta("azul",  90, 3000, 200)
-print(ca1)
-b1= Bicicleta("lila",  "urbana")
-print(b1)
-m1= Motocicleta("verde", "deportiva", 10, 200)
-print(m1)
-
-catalogar([c1, c2, ca1, b1, m1])
-#catalogar([c1, c2, ca1, b1, m1], 2)
-#catalogar([c1, c2, ca1, b1, m1], 6)

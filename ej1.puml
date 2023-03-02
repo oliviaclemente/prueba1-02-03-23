@@ -1,0 +1,40 @@
+@startuml
+class Vehiculo {
+  -color: str
+  -ruedas: int
+  +__init__(color: str, ruedas: int)
+  +__str__() -> str
+}
+
+class Coche {
+  -velocidad: int
+  -cilindrada: int
+  +__init__(color: str, velocidad: int, cilindrada: int)
+  +__str__() -> str
+}
+
+class Camioneta {
+  -carga: int
+  +__init__(color: str, velocidad: int, cilindrada: int, carga: int)
+  +__str__() -> str
+}
+
+class Bicicleta {
+  -tipo: str
+  +__init__(color: str, tipo: str)
+  +__str__() -> str
+}
+
+class Motocicleta {
+  -velocidad: int
+  -cilindra: int
+  +__init__(color: str, tipo: str, velocidad: int, cilindra: int)
+  +__str__() -> str
+}
+
+Vehiculo <|-- Coche
+Vehiculo <|-- Bicicleta
+Coche <|-- Camioneta
+Bicicleta <|-- Motocicleta
+@enduml
+
