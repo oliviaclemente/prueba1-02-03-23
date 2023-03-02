@@ -65,6 +65,6 @@ print(b1)
 m1= Motocicleta("verde", "deportiva", 10, 200)
 print(m1)
 
-#catalogar([c1, c2, ca1, b1, m1])
+catalogar([c1, c2, ca1, b1, m1])
 #catalogar([c1, c2, ca1, b1, m1], 2)
-catalogar([c1, c2, ca1, b1, m1], 6)
+#catalogar([c1, c2, ca1, b1, m1], 6)
