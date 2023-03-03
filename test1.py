@@ -14,6 +14,17 @@ class Coche(Vehiculo):
     def __str__(self):
         return "color {}, {} km/h, {} ruedas, {} cc".format(self.color, self.velocidad, self.ruedas, self.cilindrada )
     
+class Formula1(Coche):
+     def __init__(self, color, velocidad, cilindrada, equipo):
+        self.color = color
+        self.ruedas = 4
+        self.velocidad = velocidad
+        self.cilindrada = cilindrada
+        self.equipo= equipo
+     def __str__(self):
+        return "color {}, {} km/h, {} ruedas, {} cc, {} equipo".format(self.color, self.velocidad, self.ruedas, self.cilindrada, self.equipo )
+    
+    
 class Camioneta(Coche):
     def __init__(self, color, velocidad, cilindrada,carga):
         self.color = color
@@ -31,6 +42,19 @@ class Bicicleta(Vehiculo):
         self.tipo = tipo
     def __str__(self): 
         return "Color {}, {} ruedas, {} tipo".format( self.color, self.ruedas, self.tipo )
+    
+class Quad(Coche,Bicicleta):
+    def __init__(self, color, velocidad, cilindrada, tipo, modelo, carga):
+        self.color = color
+        self.ruedas = 4
+        self.velocidad = velocidad
+        self.cilindrada = cilindrada
+        self.tipo = tipo
+        self.modelo = modelo
+        self.carga = carga
+    def __str__(self):
+            return "color {}, {} km/h, {} ruedas, {} cc, {} tipo, {} modelo, {} carga".format(self.color, self.velocidad, self.ruedas, self.cilindrada, self.tipo, self.modelo, self.carga)
+
 
 class Motocicleta(Bicicleta):
     def __init__(self, color, tipo, velocidad, cilindra):
@@ -49,11 +73,15 @@ coche1 = Coche("Rojo", 120, 2000)
 bicicleta1 = Bicicleta("Azul", "Urbana")
 camioneta1 = Camioneta("Blanco", 100, 2500, 500)
 motocicleta1 = Motocicleta("Negro", "Deportiva", 180, 1000)
+formula1= Formula1("Amarillo", 300, 5000, "Mercedes")
+quad= Quad("Rosa", 20, 300, "Urbana", "Maxxer 300", 3)
 
 vehiculos.append(coche1)
 vehiculos.append(bicicleta1)
 vehiculos.append(camioneta1)
 vehiculos.append(motocicleta1)
+vehiculos.append(formula1)
+vehiculos.append(quad)
 
 def catalogar(vehiculos, ruedas=None):
     if ruedas is not None:

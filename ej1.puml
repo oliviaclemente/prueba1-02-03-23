@@ -1,40 +1,61 @@
 @startuml
+
 class Vehiculo {
-  -color: str
-  -ruedas: int
-  +__init__(color: str, ruedas: int)
-  +__str__() -> str
+  - color
+  - ruedas
+  + __init__(color, ruedas)
+  + __str__()
 }
 
 class Coche {
-  -velocidad: int
-  -cilindrada: int
-  +__init__(color: str, velocidad: int, cilindrada: int)
-  +__str__() -> str
+  - velocidad
+  - cilindrada
+  + __init__(color, velocidad, cilindrada)
+  + __str__()
+}
+
+class Formula1 {
+  - equipo
+  + __init__(color, velocidad, cilindrada, equipo)
+  + __str__()
 }
 
 class Camioneta {
-  -carga: int
-  +__init__(color: str, velocidad: int, cilindrada: int, carga: int)
-  +__str__() -> str
+  - carga
+  + __init__(color, velocidad, cilindrada, carga)
+  + __str__()
 }
 
 class Bicicleta {
-  -tipo: str
-  +__init__(color: str, tipo: str)
-  +__str__() -> str
+  - tipo
+  + __init__(color, tipo)
+  + __str__()
+}
+
+class Quad {
+  - velocidad
+  - cilindrada
+  - tipo
+  - modelo
+  - carga
+  + __init__(color, velocidad, cilindrada, tipo, modelo, carga)
+  + __str__()
 }
 
 class Motocicleta {
-  -velocidad: int
-  -cilindra: int
-  +__init__(color: str, tipo: str, velocidad: int, cilindra: int)
-  +__str__() -> str
+  - velocidad
+  - cilindra
+  + __init__(color, tipo, velocidad, cilindra)
+  + __str__()
 }
 
 Vehiculo <|-- Coche
-Vehiculo <|-- Bicicleta
+Coche <|-- Formula1
 Coche <|-- Camioneta
+Vehiculo <|-- Bicicleta
+Coche <|-- Quad
 Bicicleta <|-- Motocicleta
+
 @enduml
+
 

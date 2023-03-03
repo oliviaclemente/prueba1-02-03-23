@@ -1,77 +1,75 @@
-class Vehiculo():
-     def __init__(self, color, ruedas):
-        self.color = color
-        self.ruedas = ruedas
-     def __str__(self):
-        return "Color {}, {} ruedas".format( self.color, self.ruedas )
-
-class Coche(Vehiculo):
-    def __init__(self, color, velocidad, cilindrada):
-        self.color = color
-        self.ruedas = 4
-        self.velocidad = velocidad
-        self.cilindrada = cilindrada
-    def __str__(self):
-        return "color {}, {} km/h, {} ruedas, {} cc".format(self.color, self.velocidad, self.ruedas, self.cilindrada )
+# Función para agregar un vehículo
+def agregar_vehiculo():
+    tipo = input("¿Qué tipo de vehículo desea agregar? (Coche, Formula1, Camioneta, Bicicleta, Motocicleta, Quad) ")
+    color = input("Ingrese el color: ")
     
-class Camioneta(Coche):
-    def __init__(self, color, velocidad, cilindrada,carga):
-        self.color = color
-        self.ruedas = 6
-        self.velocidad = velocidad
-        self.cilindrada = cilindrada
-        self.carga= carga
-    def __str__(self):
-        return  "color {}, {} km/h, {} ruedas, {} cc, {} kg".format(self.color, self.velocidad, self.ruedas, self.cilindrada, self.carga)
+    if tipo == "Coche":
+        velocidad = float(input("Ingrese la velocidad en km/h: "))
+        cilindrada = int(input("Ingrese la cilindrada en cc: "))
+        vehiculo = Coche(color, velocidad, cilindrada)
+    elif tipo == "Formula1":
+        velocidad = float(input("Ingrese la velocidad en km/h: "))
+        cilindrada = int(input("Ingrese la cilindrada en cc: "))
+        equipo = input("Ingrese el equipo: ")
+        vehiculo = Formula1(color, velocidad, cilindrada, equipo)
+    elif tipo == "Camioneta":
+        velocidad = float(input("Ingrese la velocidad en km/h: "))
+        cilindrada = int(input("Ingrese la cilindrada en cc: "))
+        carga = int(input("Ingrese la carga en kg: "))
+        vehiculo = Camioneta(color, velocidad, cilindrada, carga)
+    elif tipo == "Bicicleta":
+        tipo_bici = input("Ingrese el tipo de bicicleta: ")
+        vehiculo = Bicicleta(color, tipo_bici)
+    elif tipo == "Motocicleta":
+        velocidad = float(input("Ingrese la velocidad en km/h: "))
+        cilindrada = int(input("Ingrese la cilindrada en cc: "))
+        tipo_moto = input("Ingrese el tipo de motocicleta: ")
+        vehiculo = Motocicleta(color, tipo_moto, velocidad, cilindrada)
+    elif tipo == "Quad":
+        velocidad = float(input("Ingrese la velocidad en km/h: "))
+        cilindrada = int(input("Ingrese la cilindrada en cc: "))
+        tipo_quad = input("Ingrese el tipo de quad: ")
+        modelo = input("Ingrese el modelo: ")
+        carga = int(input("Ingrese la carga en kg: "))
+        vehiculo = Quad(color, velocidad, cilindrada, tipo_quad, modelo, carga)
+    else:
+        print("Tipo de vehículo no válido.")
+        return
     
-class Bicicleta(Vehiculo):
-    def __init__(self, color, tipo):
-        self.color = color
-        self.ruedas = 2
-        self.tipo = tipo
-    def __str__(self): 
-        return "Color {}, {} ruedas, {} tipo".format( self.color, self.ruedas, self.tipo )
+    vehiculos.append(vehiculo)
+    print("Vehículo agregado exitosamente.")
+    print()
 
-class Motocicleta(Bicicleta):
-    def __init__(self, color, tipo, velocidad, cilindra):
-        self.color = color
-        self.ruedas = 2
-        self.tipo = tipo
-        self.velocidad= velocidad
-        self.cilindra= cilindra
-    def __str__(self): 
-        return "Color {}, {} ruedas, {} tipo, {} km/h, {} ruedas".format( self.color, self.ruedas, self.tipo, self.velocidad, self.cilindra)
-    
-#Realiza una función llamada catalogar() que reciba la lista de vehiculos y los recorra mostrando el nombre de su clase y sus atributos.
-
-def catalogar(Vehiculos):
-    for Vehiculo in Vehiculo:
-        print("Clase:", type(Vehiculos).__name__)
-        print("Atributos:")
-        for atributo in dir(Vehiculos):
-            if not atributo.startswith("__"):
-                print("- ", atributo)
+# Función para mostrar los vehículos
+def mostrar_vehiculos():
+    for i, vehiculo in enumerate(vehiculos):
+        print("Vehículo", i+1)
+        print(vehiculo)
         print()
 
+# Función para salir del programa
+def salir():
+    print("¡Hasta luego!")
+    exit()
 
+# Lista de vehículos
+vehiculos = []
 
-
+# Menú principal
 while True:
-    print("¿Qué desea hacer?")
-    print("1. Mostrar todos los vehículos")
-    print("2. Mostrar vehículos con 2 ruedas")
-    print("3. Mostrar vehículos con 4 ruedas")
-    print("4. Salir")
-    opcion = input("Seleccione una opción: ")
+    print("----- MENÚ -----")
+    print("1. Agregar vehículo")
+    print("2. Mostrar vehículos")
+    print("3. Salir")
+    
+    opcion = input("Ingrese una opción: ")
+    
     if opcion == "1":
-        catalogar(Vehiculo)
+        agregar_vehiculo()
     elif opcion == "2":
-        catalogar(Vehiculo, 2)
+        mostrar_vehiculos()
     elif opcion == "3":
-        catalogar(Vehiculo, 4)
-    elif opcion == "4":
-        break
+        salir()
     else:
-        print("Opción no válida. Por favor seleccione una opción válida.")
-
-
+        print("Opción no válida. Intente de nuevo.")
+        print()
